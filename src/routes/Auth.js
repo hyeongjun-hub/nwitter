@@ -1,4 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Auth = () => <span>Auth</span>;
+const Auth = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const onChange = (e) => {
+    const {
+      target: { name, value },
+    } = e;
+    if (name === "email") {
+      setEmail(value);
+    } else if (name === "password") {
+      setPassword(value);
+    }
+  };
+  const onSubmint = (e) => {
+    e.preventDefault();
+  };
+  return (
+    <div>
+      <form>
+        <input
+          name="email"
+          type="text"
+          placeholder="Email"
+          required
+          value={email}
+          onChange={onChange}
+        />
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          required
+          value={password}
+          onChange={onChange}
+        />
+        <input name="password" type="submit" value="login" />
+      </form>
+      <div>
+        <button>Continue with Google</button>
+        <button>Continue with Github</button>
+      </div>
+    </div>
+  );
+};
 export default Auth;
